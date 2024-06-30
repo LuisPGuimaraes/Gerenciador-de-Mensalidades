@@ -1,0 +1,6 @@
+class Enrollment < ApplicationRecord
+  validates :amount, presence: true, numericality: {greater_than: 0}
+  validates :installments, presence: true, numericality: {greater_than: 1}
+  validates :due_day, presence: true, numericality: { greater_than_or_equal_to: 1, less_than_or_equal_to: 31 }
+
+end
