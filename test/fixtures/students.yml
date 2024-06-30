@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  cpf: 1
+  birthdate: 2024-06-30
+  payment_method: MyString
+
+two:
+  name: MyString
+  cpf: 1
+  birthdate: 2024-06-30
+  payment_method: MyString
