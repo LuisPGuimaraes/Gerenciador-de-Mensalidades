@@ -1,3 +1,4 @@
+require 'time'
 class  StudentsController < ApplicationController
 
   def index
@@ -8,6 +9,11 @@ class  StudentsController < ApplicationController
 
   def create
     student = Student.new(student_params)
+
+    if Date.parse(student_params['birthdate']) > Date.current
+      render json: { error: 'Data de Nascimento inválida' }, status: :bad_request
+      return
+    end
 
     if student.save
       render json: {'id': "#{student.id}"},status: :ok
