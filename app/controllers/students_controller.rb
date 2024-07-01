@@ -1,8 +1,8 @@
 class  StudentsController < ApplicationController
 
-  def index()
+  def index
       students_all = Student.all;
-      selected_students = chosse_students(page_params,students_all)
+      selected_students = choose_students(students_all)
       render json: { data:selected_students },status: :ok
   end
 
@@ -25,9 +25,11 @@ class  StudentsController < ApplicationController
         params.permit(:page, :count)
   end
 
-  def chosse_students(page_params,students_all)
-    index_max = page_params["page"] * page_params["count"]
-    index_min = index_max - page_params["count"]
+  def choose_students(students_all)
+    page = page_params["page"]
+    count = page_params["count"]
+    index_max = page * count
+    index_min = index_max - count
     selected_students = []
 
     for student in index_min...index_max
