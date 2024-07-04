@@ -10,7 +10,7 @@ class  StudentsController < ApplicationController
   def create
     student = Student.new(student_params)
 
-    if Date.parse(student_params['birthdate']) > Date.current
+    if student_params['birthdate'] != nil && Date.parse(student_params['birthdate']) > Date.current
       render json: { error: 'Data de Nascimento inválida' }, status: :bad_request
       return
     end
